@@ -1,0 +1,10 @@
+---
+- hosts: all
+  become: yes
+  roles:
+    - role: geerlingguy.nodejs
+      nodejs_version: 12.x
+      nodejs_install_npm_user: vagrant
+    - role: geerlingguy.docker
+      docker_users:
+        - vagrant
