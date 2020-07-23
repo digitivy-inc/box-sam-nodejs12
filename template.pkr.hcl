@@ -2,6 +2,10 @@ variable "vagrant_cloud_access_token" {
   type = string
 }
 
+variable "vagrant_cloud_box_tag" {
+  type = string
+}
+
 source "vagrant" "bionic" {
   source_path  = "ubuntu/bionic64"
   communicator = "ssh"
@@ -26,7 +30,7 @@ build {
   }
 
   post-processor "vagrant-cloud" {
-    box_tag = "swift-saas/sam-nodejs12"
+    box_tag = var.vagrant_cloud_box_tag
     access_token = var.vagrant_cloud_access_token
     version = "0.1.0"
   }
